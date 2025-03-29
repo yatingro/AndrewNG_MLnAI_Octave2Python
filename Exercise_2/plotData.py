@@ -11,12 +11,5 @@ def plotData(X, y):
 
     plt.scatter(X[pos, 0], X[pos, 1], c='k', marker='+', linewidths=2)
     plt.scatter(X[neg, 0], X[neg, 1], c='y', marker='o', linewidths=2)
-    # Put some labels and legends
-    plt.xlabel('Exam 1 score')
-    plt.ylabel('Exam 2 score')
-    # Specified in plot order
-    plt.legend(["Admitted", "Not Admitted"])
-    
-    plt.show(block=False)
-    plt.get_backend()
+
     
