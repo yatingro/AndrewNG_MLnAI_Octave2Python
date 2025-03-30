@@ -108,6 +108,10 @@ print(' -25.161\n0.206\n0.201\n')
 # Plot Boundary
 from plotDecisionBoundary import plotDecisionBoundary
 plotDecisionBoundary(theta, X, y)
+plt.xlabel('Exam 1 score')
+plt.ylabel('Exam 2 score')
+print('Close the plot to continue')
+plt.show()
 
 pause()
 

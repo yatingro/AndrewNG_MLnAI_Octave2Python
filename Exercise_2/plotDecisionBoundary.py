@@ -27,6 +27,7 @@ def plotDecisionBoundary(theta, X, y):
         # Legend, specific for the exercise
         plt.legend(['Admitted', 'Not Admitted', 'Decision Boundary'])
         plt.axis([30, 100, 30, 100])
+        
     else:
         # Here is the grid range
         u = np.linspace(-1, 1.5, 50)
@@ -43,5 +44,4 @@ def plotDecisionBoundary(theta, X, y):
         # Plot z = 0
         # Notice you need to specify the range [0, 0]
         plt.contour(u, v, z, levels=[0], linewidths=2)
-    plt.show()
-
+        
