@@ -38,7 +38,7 @@ data = sio.loadmat('ex3data1.mat')
 X = data['X']
 y = data['y'].flatten().reshape(-1, 1)
 m = y.size
-
+y = np.where(y == 10, 0, y)  # Change label 10 to 0
 # Randomly select 100 data points to display
 rand_indices = np.random.permutation(m)
 sel = X[rand_indices[0:100], :]
@@ -62,8 +62,10 @@ theta_t = np.array([[-2], [-1], [1], [2]])
 X_t = np.column_stack((np.ones(5), np.arange(1, 16).reshape(3, 5).T/10))
 y_t = np.array([[1], [0], [1], [0], [1]])
 lambda_t = 3
-J, grad = lrCostFunction(theta_t, X_t, y_t, lambda_t)
-
+from lrCostFunction import lrCostFunction, gradient
+# Compute cost and gradient
+J = lrCostFunction(theta_t, X_t, y_t, lambda_t)
+grad = gradient(theta_t, X_t, y_t, lambda_t)
 print('Cost: {}\n'.format(J))
 print('Expected cost: 2.534819\n')
 print('Gradients:\n')
@@ -74,12 +76,13 @@ pause()
 
 # %% ============ Part 2b: One-vs-All Training ============
 print('Training One-vs-All Logistic Regression...')
-
+from oneVsAll import oneVsAll
 lmbda = 0.1
 all_theta = oneVsAll(X, y, num_labels, lmbda)
 pause()
 
 # %% ================ Part 3: Predict for One-Vs-All ================
+from predictOneVsAll import predictOneVsAll
 pred = predictOneVsAll(all_theta, X)
 
 print('Training Set Accuracy: {:.2f}%'.format(np.mean(pred == y) * 100))
